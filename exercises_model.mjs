@@ -15,7 +15,7 @@ db.once("open", () => {
 });
 
 // 1. Define a schema
-const userSchema = mongoose.Schema({
+const exerciseSchema = mongoose.Schema({
     name: { type: String, required: true },
     reps: { type: Number, required: true },
     weight: { type: Number, required: true },
@@ -24,4 +24,33 @@ const userSchema = mongoose.Schema({
 });
 
 // 2. Compile model from the schema
-const User = mongoose.model("Users_model", userSchema);
+const Exercise = mongoose.model("Exercise", exerciseSchema);
+
+// 3. CRUD async functions
+// Create
+const createExercise = async (name, reps, weight, unit, date) => {
+    // Call constructor to create user instance from Users_model model class
+    const exercise = new Exercise({name: name, reps: reps, weight: weight, unit: unit, date: date});
+    // Call save to persist object as a document in MongoDB
+    return exercise.save();
+}
+
+// Retrieve/read that retrieves the entire collection of exercises
+const retrieveExercises = async () => {
+    const query = Exercise.find({}); // return all documents by omitting query param or {}
+    return query.exec();
+}
+
+// Update the exercise that has the specified id
+const updateExercise = async (condition, update) => {
+    await Exercise.findOneAndUpdate(condition, update)
+    return 1
+}
+
+// Delete the exercise that has the specified id
+const deleteExercise = async ( id ) => {
+    await Exercise.deleteOne( id )
+    return 1
+}
+
+export { createExercise, retrieveExercises, updateExercise, deleteExercise }
