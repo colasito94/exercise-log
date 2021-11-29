@@ -48,8 +48,8 @@ const updateExercise = async (condition, update) => {
 }
 
 // Delete the exercise that has the specified id
-const deleteExercise = async ( id ) => {
-    await Exercise.deleteOne( id )
+const deleteExercise = async ( _id ) => {
+    await Exercise.deleteOne( {"_id" : _id} )
     return 1
 }
 

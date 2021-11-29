@@ -62,8 +62,9 @@ app.put('/exercises/:_id', (req, res) => {
     exercises.updateExercise( condition, update )
         .then(numUpdated => {
             if (numUpdated === 1) {
+                res.status(200).send();
                 res.json({_id: req.params._id, name: req.body.name, reps: req.body.reps, weight: req.body.weight,
-                                unit: req.body.unit, date: req.body.date})
+                                unit: req.body.unit, date: req.body.date});
             } else {
                 res.status(500).json({Error: 'Resource not found'});
             }
