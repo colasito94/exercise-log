@@ -14,7 +14,7 @@ db.once("open", () => {
     console.log("Successfully connected to MongoDB using Mongoose!");
 });
 
-// 1. Define a schema
+// 1. Define a Schema
 const exerciseSchema = mongoose.Schema({
     name: { type: String, required: true },
     reps: { type: Number, required: true },
@@ -23,10 +23,10 @@ const exerciseSchema = mongoose.Schema({
     date: { type: String, required: true },
 });
 
-// 2. Compile model from the schema
+// 2. Compile Model from the Schema
 const Exercise = mongoose.model("Exercise", exerciseSchema);
 
-// 3. CRUD async functions
+// 3. Mongoose API CRUD methods
 // Create
 const createExercise = async (name, reps, weight, unit, date) => {
     // Call constructor to create user instance from Users_model model class

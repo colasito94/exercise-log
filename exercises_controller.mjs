@@ -3,10 +3,11 @@ import express from 'express';
 const app = express();
 const PORT = 3000;
 
-// Express.json middleware required for a REST API
+// Express.json middleware required for REST API
 app.use(express.json());
 
 /**
+ * POST method
  * Create a new exercise with the name, weight, unit, and date
  */
 app.post('/exercises', (req, res) => {
@@ -23,6 +24,7 @@ app.post('/exercises', (req, res) => {
 });
 
 /**
+ * GET Method
  * Retrieve all the exercises in the collection.
  */
 app.get('/exercises', (req, res) => {
@@ -37,6 +39,7 @@ app.get('/exercises', (req, res) => {
 });
 
 /**
+ * PUT Method
  * Update the exercise whose id is provided in the path parameter.
  */
 app.put('/exercises/:_id', (req, res) => {
@@ -76,6 +79,7 @@ app.put('/exercises/:_id', (req, res) => {
 });
 
 /**
+ * DELETE Method
  * Delete the exercise whose id is provided in the route parameter
  */
 app.delete('/exercises/:_id', (req, res) => {
